@@ -20,11 +20,9 @@
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="asset/css/adminlte.min.css">
-
 </head>
 
 <body class="hold-transition sidebar-mini">
-
 
     <div class="wrapper">
 
@@ -122,11 +120,15 @@
                         // Mendapatkan URL halaman saat ini
                         const currentURL = window.location.href;
 
+                        console.log(currentURL);
+
                         // Mendapatkan elemen link sidebar
                         const sibLink = document.getElementById('sib-link');
 
                         // Cek apakah URL saat ini mengandung 'index.html' untuk menambahkan class 'active'
                         if (currentURL.includes('index.html')) {
+                            sibLink.classList.add('active');
+                        } else {
                             sibLink.classList.add('active');
                         }
                     } else {

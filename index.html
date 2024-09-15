@@ -110,13 +110,6 @@
     <script src="asset/js/adminlte.min.js"></script>
 
     <script>
-        function convertToInternationalNumber(number) {
-            if (number.startsWith('0')) {
-                return '62' + number.slice(1);
-            }
-            return number;
-        }
-
         document.addEventListener("DOMContentLoaded", function () {
             fetch('layout/sidebar.html')  // Pastikan path benar
                 .then(response => response.text())
@@ -170,17 +163,6 @@
                     } else {
                         console.error("SIB container not found");
                     }
-
-                    const wa = document.querySelectorAll('.wa-link');
-
-                    wa.forEach(link => {
-                        // Mendapatkan nomor telepon dari data attribute
-                        const localNumber = link.getAttribute('data-phone');
-                        const internationalNumber = convertToInternationalNumber(localNumber);
-
-                        // Memperbarui href
-                        link.href = `https://wa.me/${internationalNumber}`;
-                    });
                 })
                 .catch(error => console.error('Error loading sib:', error));
         });

@@ -112,36 +112,37 @@
     <script src="../asset/js/script.js"></script>
 
     <script>
-        fetch('../data/sib.html')  // Pastikan path benar
-            .then(response => response.text())
-            .then(data => {
-                const sibContainer = document.getElementById('sib-container');
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('../data/sib.html')  // Pastikan path benar
+                .then(response => response.text())
+                .then(data => {
+                    const sibContainer = document.getElementById('sib-container');
 
-                if (sibContainer) {
-                    sibContainer.innerHTML = data;
-                    const searchInput = document.getElementById('searchInput');
-                    const Items = document.querySelectorAll('.item');
+                    if (sibContainer) {
+                        sibContainer.innerHTML = data;
+                        const searchInput = document.getElementById('searchInput');
+                        const Items = document.querySelectorAll('.item');
 
-                    searchInput.addEventListener('input', function () {
-                        const query = searchInput.value.toLowerCase();
+                        searchInput.addEventListener('input', function () {
+                            const query = searchInput.value.toLowerCase();
 
-                        Items.forEach(item => {
-                            // Ambil semua teks dari elemen dalam card
-                            const textContent = item.textContent.toLowerCase();
+                            Items.forEach(item => {
+                                // Ambil semua teks dari elemen dalam card
+                                const textContent = item.textContent.toLowerCase();
 
-                            // Tampilkan atau sembunyikan item berdasarkan pencarian
-                            if (textContent.includes(query)) {
-                                item.style.display = '';
-                            } else {
-                                item.style.display = 'none';
-                            }
+                                // Tampilkan atau sembunyikan item berdasarkan pencarian
+                                if (textContent.includes(query)) {
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
                         });
-                    });
-                } else {
-                    console.error("SIB container not found");
-                }
-            })
-            .catch(error => console.error('Error loading sib:', error));
+                    } else {
+                        console.error("SIB container not found");
+                    }
+                })
+                .catch(error => console.error('Error loading sib:', error));
         });
     </script>
 

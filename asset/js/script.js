@@ -11,15 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Mendapatkan elemen link sidebar
                 const sibLink = document.getElementById('sib-link');
                 const vmtLink = document.getElementById('vmt-link');
-                const websitePolinusLink = document.getElementById('website-polinus-link');
+                const wsPolinusLink = document.getElementById('ws-polinus-link');
+                const dosenLink = document.getElementById('dosen-link');
 
                 // Cek apakah URL saat ini mengandung 'index.html' untuk menambahkan class 'active'
                 if (currentURL.includes('index.html')) {
                     sibLink.classList.add('active');
                 } else if (currentURL.includes('vmt.html')) {
                     vmtLink.classList.add('active');
-                } else if (currentURL.includes('website-polinus.html')) {
-                    websitePolinusLink.classList.add('active');
+                } else if (currentURL.includes('ws.html')) {
+                    wsPolinusLink.classList.add('active');
+                } else if (currentURL.includes('dosen.html')) {
+                    dosenLink.classList.add('active');
                 } else {
                     sibLink.classList.add('active');
                 }

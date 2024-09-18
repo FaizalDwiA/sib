@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>SIB</title>
+    <title>Dosen</title>
     <meta content="Author" name="Faizal Dwi Al Farizi">
     <meta content="Bismillah" name="description">
     <meta content="Syiber" name="keywords">
@@ -56,12 +56,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Sistem Informasi B</h1>
+                            <h1>Dosen</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">Orang</li>
-                                <li class="breadcrumb-item active">SIB</li>
+                                <li class="breadcrumb-item active">Dosen</li>
                             </ol>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div id="sib-container"></div>
+                    <div id="dosen-container"></div>
                     <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
@@ -112,36 +112,37 @@
     <script src="../asset/js/script.js"></script>
 
     <script>
-        fetch('../data/sib.html')  // Pastikan path benar
-            .then(response => response.text())
-            .then(data => {
-                const sibContainer = document.getElementById('sib-container');
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('../data/dosen.html')  // Pastikan path benar
+                .then(response => response.text())
+                .then(data => {
+                    const dosenContainer = document.getElementById('dosen-container');
 
-                if (sibContainer) {
-                    sibContainer.innerHTML = data;
-                    const searchInput = document.getElementById('searchInput');
-                    const Items = document.querySelectorAll('.item');
+                    if (dosenContainer) {
+                        dosenContainer.innerHTML = data;
+                        const searchInput = document.getElementById('searchInput');
+                        const Items = document.querySelectorAll('.item');
 
-                    searchInput.addEventListener('input', function () {
-                        const query = searchInput.value.toLowerCase();
+                        searchInput.addEventListener('input', function () {
+                            const query = searchInput.value.toLowerCase();
 
-                        Items.forEach(item => {
-                            // Ambil semua teks dari elemen dalam card
-                            const textContent = item.textContent.toLowerCase();
+                            Items.forEach(item => {
+                                // Ambil semua teks dari elemen dalam card
+                                const textContent = item.textContent.toLowerCase();
 
-                            // Tampilkan atau sembunyikan item berdasarkan pencarian
-                            if (textContent.includes(query)) {
-                                item.style.display = '';
-                            } else {
-                                item.style.display = 'none';
-                            }
+                                // Tampilkan atau sembunyikan item berdasarkan pencarian
+                                if (textContent.includes(query)) {
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
                         });
-                    });
-                } else {
-                    console.error("SIB container not found");
-                }
-            })
-            .catch(error => console.error('Error loading sib:', error));
+                    } else {
+                        console.error("Dosen container not found");
+                    }
+                })
+                .catch(error => console.error('Error loading dosen:', error));
         });
     </script>
 

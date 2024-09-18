@@ -56,12 +56,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Website Polinus</h1>
+                            <h1>Website & Sosmed Polinus</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">Polinus</li>
-                                <li class="breadcrumb-item active">Website</li>
+                                <li class="breadcrumb-item active">Website & Sosmed</li>
                             </ol>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div id="website-polinus-container"></div>
+                    <div id="ws-polinus-container"></div>
                     <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
@@ -113,13 +113,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('../data/website-polinus.html')  // Pastikan path benar
+            fetch('../data/ws.html')  // Pastikan path benar
                 .then(response => response.text())
                 .then(data => {
-                    const websitePolinusContainer = document.getElementById('website-polinus-container');
+                    const wsPolinusContainer = document.getElementById('ws-polinus-container');
 
-                    if (websitePolinusContainer) {
-                        websitePolinusContainer.innerHTML = data;
+                    if (wsPolinusContainer) {
+                        wsPolinusContainer.innerHTML = data;
                     } else {
                         console.error("VMT container not found");
                     }

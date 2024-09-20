@@ -9,13 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 const currentURL = window.location.href;
 
                 // Mendapatkan elemen link sidebar
+                const waktuSholatLink = document.getElementById('waktu-sholat-link');
                 const sibLink = document.getElementById('sib-link');
                 const vmtLink = document.getElementById('vmt-link');
                 const wsPolinusLink = document.getElementById('ws-polinus-link');
                 const dosenLink = document.getElementById('dosen-link');
 
                 // Cek apakah URL saat ini mengandung 'index.html' untuk menambahkan class 'active'
-                if (currentURL.includes('index.html')) {
+                if (currentURL.includes('waktu-sholat.html')) {
+                    waktuSholatLink.classList.add('active');
+                } else if (currentURL.includes('sib.html')) {
                     sibLink.classList.add('active');
                 } else if (currentURL.includes('vmt.html')) {
                     vmtLink.classList.add('active');
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else if (currentURL.includes('dosen.html')) {
                     dosenLink.classList.add('active');
                 } else {
-                    sibLink.classList.add('active');
+                    waktuSholatLink.classList.add('active');
                 }
             } else {
                 console.error("Sidebar container not found");

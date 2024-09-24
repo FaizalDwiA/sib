@@ -32,6 +32,29 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 console.error("Sidebar container not found");
             }
+
+
+            // Sidebar
+
+            const searchSidebar = document.getElementById('searchSidebar')
+            const Items = document.querySelectorAll('#navbarItem li');
+
+            searchSidebar.addEventListener('input', function () {
+                console.log('ok');
+                const query = searchSidebar.value.toLowerCase();
+
+                Items.forEach(item => {
+                    // Ambil semua teks dari elemen dalam card
+                    const textContent = item.textContent.toLowerCase();
+
+                    // Tampilkan atau sembunyikan item berdasarkan pencarian
+                    if (textContent.includes(query)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         })
         .catch(error => console.error('Error loading sidebar:', error));
 });

@@ -27,27 +27,12 @@
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light" id="navbar"></nav>
+        <script src="../asset/js/layouts/navbar.js"></script>
 
         <!-- Main Sidebar Container -->
-        <div id="sidebar-container"></div>
+        <aside class="main-sidebar sidebar-dark-teal elevation-4" id="sidebar"></aside>
+        <script src="../asset/js/layouts/sidebar.js"></script>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="min-height: 719.812px;">
@@ -71,8 +56,114 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div id="ws-polinus-container"></div>
-                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-primary text-white">
+                                <div class="inner">
+                                    <h3>Polinus</h3>
+
+                                    <p>https://www.poltekindonusa.ac.id/</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <a href="https://www.poltekindonusa.ac.id/" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-success text-white">
+                                <div class="inner">
+                                    <h3>Polinus Payment</h3>
+
+                                    <p>https://sikeu.poltekindonusa.ac.id</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <a href="https://sikeu.poltekindonusa.ac.id" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-orange text-white">
+                                <div class="inner">
+                                    <h3>Informasi Akademik</h3>
+
+                                    <p>https://akademik.poltekindonusa.ac.id</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <a href="https://akademik.poltekindonusa.ac.id" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-secondary text-white">
+                                <div class="inner">
+                                    <h3>Siakad Polinus</h3>
+
+                                    <p>https://siakadv2.poltekindonusa.ac.id</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <a href="https://siakadv2.poltekindonusa.ac.id" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-primary text-white">
+                                <div class="inner">
+                                    <h3>Facebook</h3>
+
+                                    <p>https://www.facebook.com/share/D7BSWbPEFoqxoesL/?mibextid=qi2Omg</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fab fa-facebook"></i>
+                                </div>
+                                <a href="https://www.facebook.com/share/D7BSWbPEFoqxoesL/?mibextid=qi2Omg"
+                                    class="small-box-footer">More
+                                    info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-dark text-white">
+                                <div class="inner">
+                                    <h3>Tiktok</h3>
+
+                                    <p>https://www.tiktok.com/@poltek_indonusa</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                                <a href="https://www.tiktok.com/@poltek_indonusa" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <!-- small box -->
+                            <div class="small-box bg-danger text-white">
+                                <div class="inner">
+                                    <h3>Instagram</h3>
+
+                                    <p>https://www.instagram.com/poltek_indonusa</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <a href="https://www.instagram.com/poltek_indonusa" class="small-box-footer">More info
+                                    <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
             </section>
@@ -80,12 +171,9 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 1.1.0
-            </div>
-            <strong>Copyright © 2024 <a href="#">Faizal Dwi Al Farizi</a>.</strong> All rights reserved.
-        </footer>
+        <!-- Footer -->
+        <footer class="main-footer" id="footer"></footer>
+        <script src="../asset/js/layouts/footer.js"></script>
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
                 class="bi bi-arrow-up-short"></i></a>
@@ -108,25 +196,6 @@
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../asset/js/adminlte.min.js"></script>
-
-    <script src="../asset/js/script.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('../data/ws.html')  // Pastikan path benar
-                .then(response => response.text())
-                .then(data => {
-                    const wsPolinusContainer = document.getElementById('ws-polinus-container');
-
-                    if (wsPolinusContainer) {
-                        wsPolinusContainer.innerHTML = data;
-                    } else {
-                        console.error("VMT container not found");
-                    }
-                })
-                .catch(error => console.error('Error loading VMT:', error));
-        });
-    </script>
 
 </body>
 

@@ -37,7 +37,7 @@ const sidebarHTML = `
             with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <a href="waktu_sholat.html" class="nav-link" id="waktu_sholat">
-                    <i class="nav-icon fa fa-home"></i>
+                    <i class="nav-icon fas fa-mosque"></i>
                     <p>
                         Waktu Sholat
                     </p>
@@ -45,7 +45,7 @@ const sidebarHTML = `
             </li>
             <li class="nav-item">
                 <a href="sib.html" class="nav-link" id="sib">
-                    <i class="nav-icon fa fa-calendar"></i>
+                    <i class="nav-icon fas fa-users"></i>
                     <p>
                         SIB
                     </p>
@@ -53,7 +53,7 @@ const sidebarHTML = `
             </li>
             <li class="nav-item">
                 <a href="vmt.html" class="nav-link" id="vmt">
-                    <i class="nav-icon fa fa-star"></i>
+                    <i class="nav-icon fas fa-bullseye"></i>
                     <p>
                         VMT D4
                     </p>
@@ -61,7 +61,7 @@ const sidebarHTML = `
             </li>
             <li class="nav-item">
                 <a href="dosen.html" class="nav-link" id="dosen">
-                    <i class="nav-icon fa fa-star"></i>
+                    <i class="nav-icon fas fa-chalkboard-teacher"></i>
                     <p>
                         Dosen
                     </p>
@@ -69,7 +69,7 @@ const sidebarHTML = `
             </li>
             <li class="nav-item">
                 <a href="ws.html" class="nav-link" id="ws">
-                    <i class="nav-icon fa fa-star"></i>
+                    <i class="nav-icon fas fa-globe"></i>
                     <p>
                         Website
                     </p>

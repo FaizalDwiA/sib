@@ -1988,6 +1988,27 @@
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../asset/js/adminlte.min.js"></script>
+    <!-- Script Faizal Dwi Al Farizi -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const Items = document.querySelectorAll('.item');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+
+            Items.forEach(item => {
+                // Ambil semua teks dari elemen dalam card
+                const textContent = item.textContent.toLowerCase();
+
+                // Tampilkan atau sembunyikan item berdasarkan pencarian
+                if (textContent.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 const footerHTML = `
     <strong style="margin: auto;">Copyright &copy; 2025 
-        <a href="https://faizaldwia.github.io/portofolio/index.html">Faizal Dwi Al Farizi</a>
+        <a href="https://faizaldwia.github.io/faizal-dwi-al-farizi">Faizal Dwi Al Farizi</a>
     </strong>
 
     <!-- Back to Top -->

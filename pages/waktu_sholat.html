@@ -1,352 +1,919 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<title>Waktu Sholat</title>
-		<meta content="Author" name="Faizal Dwi Al Farizi" />
-		<meta content="Bismillah" name="description" />
-		<meta content="Syiber" name="keywords" />
+<html lang="id">
 
-		<!-- Logo -->
-		<link
-			rel="shortcut icon"
-			href="asset/img/logo/sib.ico"
-			type="image/x-icon"
-		/>
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Waktu Sholat — SIB</title>
+	<meta name="author" content="Faizal Dwi Al Farizi" />
 
-		<!-- Google Font: Source Sans Pro -->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback"
-		/>
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
-		<!-- Theme style -->
-		<link rel="stylesheet" href="../asset/css/adminlte.min.css" />
-	</head>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="asset/img/logo/sib.ico" type="image/x-icon" />
 
-	<body class="hold-transition sidebar-mini">
-		<div class="wrapper">
-			<!-- Navbar -->
-			<nav
-				class="main-header navbar navbar-expand navbar-white navbar-light"
-				id="navbar"
-			></nav>
-			<script src="../asset/js/layouts/navbar.js"></script>
+	<!-- Fonts -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
+	<!-- AdminLTE -->
+	<link rel="stylesheet" href="../asset/css/adminlte.min.css" />
+	<!-- Custom FDA -->
+	<link rel="stylesheet" href="../asset/css/fda.css" />
 
-			<!-- Main Sidebar Container -->
-			<aside
-				class="main-sidebar sidebar-dark-teal elevation-4"
-				id="sidebar"
-			></aside>
-			<script src="../asset/js/layouts/sidebar.js"></script>
+	<style>
+		:root {
+			--univ-blue: #1a3a6b;
+			--univ-blue2: #2055a4;
+			--univ-gold: #c8952a;
+			--univ-gold2: #e8b84b;
+			--bg-page: #eef2f7;
+			--shadow-card: 0 4px 24px rgba(26, 58, 107, .10);
+			--shadow-hover: 0 12px 40px rgba(26, 58, 107, .20);
+			--card-radius: 16px;
+			--green-a: #14532d;
+			--green-b: #16a34a;
+		}
 
-			<!-- Content Wrapper. Contains page content -->
-			<div class="content-wrapper">
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1>Jadwal Sholat</h1>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			background: var(--bg-page);
+		}
+
+		.content-wrapper {
+			background: var(--bg-page);
+		}
+
+		/* ── Page Header ── */
+		.content-header {
+			background: linear-gradient(110deg, #0f2144 0%, #1a3a6b 55%, #2563a8 100%);
+			padding: 20px 28px 18px;
+			box-shadow: 0 4px 20px rgba(15, 33, 68, .4);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.content-header::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at 15% 50%, rgba(200, 149, 42, .12) 0%, transparent 55%),
+				radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .06) 0%, transparent 45%);
+			pointer-events: none;
+		}
+
+		.content-header h1 {
+			color: #fff;
+			font-family: 'Playfair Display', serif;
+			font-size: 22px;
+			font-weight: 700;
+			margin: 0;
+			position: relative;
+			letter-spacing: -.01em;
+		}
+
+		.content-header h1 .header-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			border-radius: 10px;
+			background: rgba(200, 149, 42, .25);
+			border: 1px solid rgba(200, 149, 42, .4);
+			font-size: 15px;
+			color: var(--univ-gold2);
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+
+		.content-header .breadcrumb {
+			background: transparent;
+			margin: 0;
+			padding: 0;
+			position: relative;
+		}
+
+		.content-header .breadcrumb-item,
+		.content-header .breadcrumb-item+.breadcrumb-item::before {
+			color: rgba(255, 255, 255, .55);
+			font-size: 12px;
+		}
+
+		.content-header .breadcrumb-item.active {
+			color: rgba(255, 255, 255, .9);
+		}
+
+		.content-header .breadcrumb-item a {
+			color: rgba(255, 255, 255, .7);
+			text-decoration: none;
+		}
+
+		/* ── Kota search card ── */
+		.search-card {
+			background: #fff;
+			border-radius: var(--card-radius);
+			box-shadow: var(--shadow-card);
+			border: 1px solid rgba(221, 228, 240, .6);
+			padding: 16px 20px;
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.search-card label {
+			font-size: 13px;
+			font-weight: 700;
+			color: var(--univ-blue);
+			white-space: nowrap;
+			margin: 0;
+		}
+
+		.search-card .search-inner {
+			flex: 1;
+			position: relative;
+		}
+
+		.search-card .search-inner i {
+			position: absolute;
+			left: 13px;
+			top: 50%;
+			transform: translateY(-50%);
+			color: #94a3b8;
+			font-size: 13px;
+			pointer-events: none;
+		}
+
+		.search-card input {
+			width: 100%;
+			padding: 9px 14px 9px 38px;
+			border-radius: 10px;
+			border: 1.5px solid #dde4f0;
+			background: #f8fafc;
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			font-size: 13px;
+			outline: none;
+			transition: border .2s, box-shadow .2s;
+			color: #1e293b;
+		}
+
+		.search-card input:focus {
+			border-color: var(--univ-blue);
+			box-shadow: 0 0 0 3px rgba(26, 58, 107, .09);
+			background: #fff;
+		}
+
+		.search-card .btn-search {
+			padding: 9px 20px;
+			border-radius: 10px;
+			background: var(--univ-blue);
+			color: #fff;
+			font-size: 13px;
+			font-weight: 700;
+			border: none;
+			cursor: pointer;
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			transition: background .18s, transform .15s;
+			white-space: nowrap;
+		}
+
+		.search-card .btn-search:hover {
+			background: var(--univ-blue2);
+			transform: translateY(-1px);
+		}
+
+		/* ── Date cards ── */
+		.date-card {
+			border-radius: var(--card-radius);
+			overflow: hidden;
+			box-shadow: var(--shadow-card);
+			border: 1px solid rgba(221, 228, 240, .5);
+			background: #fff;
+			animation: fadeUp .35s both;
+		}
+
+		.date-card:nth-child(1) {
+			animation-delay: 50ms;
+		}
+
+		.date-card:nth-child(2) {
+			animation-delay: 110ms;
+		}
+
+		.date-card-head {
+			padding: 14px 18px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.date-card-head.masehi {
+			background: linear-gradient(110deg, #1a3a6b 0%, #2563a8 100%);
+		}
+
+		.date-card-head.hijriah {
+			background: linear-gradient(110deg, #14532d 0%, #16a34a 100%);
+		}
+
+		.date-card-head .dc-icon {
+			width: 32px;
+			height: 32px;
+			border-radius: 9px;
+			background: rgba(255, 255, 255, .15);
+			border: 1px solid rgba(255, 255, 255, .2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			color: #fff;
+			flex-shrink: 0;
+		}
+
+		.date-card-head h5 {
+			font-family: 'Playfair Display', serif;
+			font-size: 15px;
+			font-weight: 700;
+			color: #fff;
+			margin: 0;
+		}
+
+		.date-card-body {
+			padding: 14px 18px;
+			font-size: 14px;
+			font-weight: 600;
+			color: #1e293b;
+			text-align: center;
+			letter-spacing: .01em;
+		}
+
+		/* ── Main clock card ── */
+		.clock-card {
+			border-radius: var(--card-radius);
+			overflow: hidden;
+			box-shadow: var(--shadow-card);
+			border: 1px solid rgba(221, 228, 240, .5);
+			background: #fff;
+			animation: fadeUp .38s .17s both;
+		}
+
+		.clock-card-head {
+			background: linear-gradient(110deg, #0f2144 0%, #1a3a6b 55%, #2563a8 100%);
+			padding: 18px 22px 16px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.clock-card-head::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse at 85% 30%, rgba(255, 255, 255, .1) 0%, transparent 55%);
+			pointer-events: none;
+		}
+
+		.clock-city {
+			font-family: 'Playfair Display', serif;
+			font-size: 20px;
+			font-weight: 700;
+			color: #fff;
+			margin: 0 0 6px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.clock-city .city-icon {
+			width: 32px;
+			height: 32px;
+			border-radius: 9px;
+			background: rgba(200, 149, 42, .25);
+			border: 1px solid rgba(200, 149, 42, .4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			color: var(--univ-gold2);
+		}
+
+		#waktu-selanjutnya {
+			font-size: 12.5px;
+			font-weight: 600;
+			color: rgba(255, 255, 255, .75);
+			margin: 0;
+			position: relative;
+		}
+
+		#waktu-selanjutnya span.next-label {
+			background: rgba(200, 149, 42, .25);
+			border: 1px solid rgba(200, 149, 42, .4);
+			color: var(--univ-gold2);
+			font-weight: 800;
+			font-size: 11px;
+			letter-spacing: .06em;
+			padding: 2px 8px;
+			border-radius: 5px;
+			margin-right: 6px;
+		}
+
+		#waktu {
+			font-size: 42px;
+			font-weight: 800;
+			color: #fff;
+			letter-spacing: .06em;
+			font-family: 'Playfair Display', serif;
+			margin: 10px 0 0;
+			position: relative;
+			text-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+		}
+
+		/* ── Prayer time table ── */
+		.prayer-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.prayer-table tr {
+			border-bottom: 1px solid #f1f5fb;
+			transition: background .15s;
+		}
+
+		.prayer-table tr:last-child {
+			border-bottom: none;
+		}
+
+		.prayer-table tr:hover {
+			background: #f8fafc;
+		}
+
+		.prayer-table td {
+			padding: 13px 20px;
+			font-size: 13.5px;
+			font-weight: 600;
+			color: #334155;
+		}
+
+		.prayer-table td:first-child {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.prayer-table td:last-child {
+			text-align: right;
+			font-weight: 800;
+			color: var(--univ-blue);
+			font-size: 14px;
+			letter-spacing: .02em;
+		}
+
+		.prayer-icon {
+			width: 30px;
+			height: 30px;
+			border-radius: 8px;
+			background: #eef2fb;
+			color: var(--univ-blue);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			flex-shrink: 0;
+		}
+
+		/* Active prayer row */
+		.prayer-table tr.active-prayer {
+			background: linear-gradient(90deg, rgba(26, 58, 107, .06) 0%, transparent 100%);
+		}
+
+		.prayer-table tr.active-prayer td {
+			color: var(--univ-blue);
+		}
+
+		.prayer-table tr.active-prayer td:last-child {
+			color: var(--univ-blue2);
+		}
+
+		.prayer-table tr.active-prayer .prayer-icon {
+			background: rgba(26, 58, 107, .12);
+			color: var(--univ-blue);
+		}
+
+		.next-badge {
+			display: inline-flex;
+			align-items: center;
+			background: var(--univ-blue);
+			color: #fff;
+			font-size: 9px;
+			font-weight: 800;
+			letter-spacing: .08em;
+			padding: 2px 8px;
+			border-radius: 20px;
+			margin-left: 6px;
+		}
+
+		@keyframes fadeUp {
+			from {
+				opacity: 0;
+				transform: translateY(16px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* ── Footer ── */
+		footer#footer,
+		.main-footer {
+			font-family: 'Plus Jakarta Sans', sans-serif !important;
+			font-size: 12px !important;
+			justify-content: center !important;
+			text-align: center !important;
+			flex-wrap: nowrap !important;
+			white-space: nowrap !important;
+			gap: 4px !important;
+		}
+
+		footer#footer .float-right,
+		.main-footer .float-right {
+			display: none !important;
+		}
+
+		/* ── Back to Top ── */
+		.back-to-top {
+			position: fixed;
+			bottom: 24px;
+			right: 24px;
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			background: var(--univ-blue);
+			color: #fff;
+			box-shadow: 0 4px 16px rgba(26, 58, 107, .35);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(10px);
+			transition: opacity .25s, visibility .25s, transform .25s, background .18s;
+			z-index: 9999;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 22px;
+		}
+
+		.back-to-top:hover {
+			background: var(--univ-blue2);
+			color: #fff;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 22px rgba(26, 58, 107, .45);
+		}
+
+		.back-to-top.show {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.back-to-top .bi-arrow-up-short::before {
+			content: "\2191";
+			font-style: normal;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 1;
+			font-family: sans-serif;
+		}
+
+		@media (max-width: 576px) {
+			.search-card {
+				flex-wrap: wrap;
+			}
+
+			.search-card label {
+				flex: 0 0 100%;
+			}
+
+			#waktu {
+				font-size: 32px;
+			}
+		}
+	</style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-white navbar-light" id="navbar"></nav>
+		<script src="../asset/js/layouts/navbar.js"></script>
+
+		<!-- Sidebar -->
+		<aside class="main-sidebar sidebar-dark-teal elevation-4" id="sidebar"></aside>
+		<script src="../asset/js/layouts/sidebar.js"></script>
+
+		<!-- Content Wrapper -->
+		<div class="content-wrapper">
+
+			<!-- Page Header -->
+			<section class="content-header mb-3">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-sm-7">
+							<h1>
+								<span class="header-icon"><i class="fas fa-mosque"></i></span>
+								Jadwal Waktu Sholat
+							</h1>
+						</div>
+						<div class="col-sm-5">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="waktu_sholat.html"><i
+											class="fas fa-home mr-1"></i>TRPLB</a></li>
+								<li class="breadcrumb-item active">Jadwal Sholat</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Main Content -->
+			<section class="content">
+				<div class="container-fluid">
+
+					<!-- Search Kota -->
+					<div class="search-card mb-4">
+						<label><i class="fas fa-map-marker-alt mr-1"></i> Kota</label>
+						<div class="search-inner">
+							<i class="fas fa-search"></i>
+							<input type="search" id="searchInput" placeholder="Cari kota, misal: Surakarta…"
+								autocomplete="off" />
+						</div>
+						<button class="btn-search" onclick="searchCity()">
+							<i class="fas fa-location-arrow mr-1"></i> Cari
+						</button>
+					</div>
+
+					<!-- Date row -->
+					<div class="row mb-3">
+						<div class="col-12 col-sm-6 mb-3 mb-sm-0">
+							<div class="date-card">
+								<div class="date-card-head masehi">
+									<div class="dc-icon"><i class="fas fa-calendar-alt"></i></div>
+									<h5>Masehi</h5>
+								</div>
+								<div class="date-card-body" id="masehi">—</div>
 							</div>
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item">Islam</li>
-									<li class="breadcrumb-item active">Jadwal Sholat</li>
-								</ol>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="date-card">
+								<div class="date-card-head hijriah">
+									<div class="dc-icon"><i class="fas fa-star-and-crescent"></i></div>
+									<h5>Hijriah</h5>
+								</div>
+								<div class="date-card-body" id="hijriah">—</div>
 							</div>
 						</div>
 					</div>
-					<!-- /.container-fluid -->
-				</section>
 
-				<!-- Main content -->
-				<section class="content">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-12">
-								<div class="card">
-									<input
-										type="search"
-										id="searchInput"
-										class="form-control"
-										placeholder="Password..."
-									/>
-								</div>
-							</div>
-
-							<!-- /.col -->
-							<div class="col-12 col-sm-6">
-								<div class="card card-primary">
-									<div class="card-header">
-										<h3 class="card-title">Masehi</h3>
-									</div>
-									<div class="card-body" id="masehi">
-										Friday, 20 September 2024
-									</div>
-									<!-- /.card-body -->
-								</div>
-								<!-- /.card -->
-							</div>
-							<!-- /.col -->
-
-							<!-- /.col -->
-							<div class="col-12 col-sm-6">
-								<div class="card card-success">
-									<div class="card-header">
-										<h3 class="card-title">Hijriah</h3>
-									</div>
-									<div class="card-body" id="hijriah">
-										Al Juma'a, 16 Rabīʿ al-awwal 1446
-									</div>
-									<!-- /.card-body -->
-								</div>
-								<!-- /.card -->
-							</div>
-							<!-- /.col -->
-
-							<div class="col-12">
-								<div class="card card-dark">
-									<div class="card-header">
-										<h3>Surakarta</h3>
-									</div>
-									<div class="card-body">
-										<p id="waktu-selanjutnya">
-											Waktu sholat selanjutnya: Tengah Malam dalam 73 menit
-										</p>
-										<h1 id="waktu">22 : 16 : 15</h1>
-									</div>
-
-									<table class="table table-striped table-hover">
-										<tbody>
-											<tr>
-												<td>Subuh</td>
-												<td id="subuh">04:30</td>
-											</tr>
-											<tr>
-												<td>Terbit</td>
-												<td id="terbit">05:27</td>
-											</tr>
-											<tr>
-												<td>Dhuhur</td>
-												<td id="dhuhur">11:30</td>
-											</tr>
-											<tr>
-												<td>Asar</td>
-												<td id="asar">14:42</td>
-											</tr>
-											<tr>
-												<td>Tenggelam</td>
-												<td id="magrib">17:33</td>
-											</tr>
-											<tr>
-												<td>Magrib</td>
-												<td id="tenggelam">17:33</td>
-											</tr>
-											<tr>
-												<td>Isya</td>
-												<td id="isya">18:30</td>
-											</tr>
-											<tr>
-												<td>Tengah Malam</td>
-												<td id="tengahMalam">23:30</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<!-- /.card -->
-							</div>
+					<!-- Clock + prayer times -->
+					<div class="clock-card mb-4">
+						<div class="clock-card-head">
+							<p class="clock-city">
+								<span class="city-icon"><i class="fas fa-mosque"></i></span>
+								<span id="city-name">Surakarta</span>
+							</p>
+							<p id="waktu-selanjutnya">
+								<span class="next-label">BERIKUTNYA</span>Memuat…
+							</p>
+							<div id="waktu">00 : 00 : 00</div>
 						</div>
+
+						<table class="prayer-table">
+							<tbody>
+								<tr id="row-subuh">
+									<td><span class="prayer-icon"><i class="fas fa-moon"></i></span>Subuh</td>
+									<td id="subuh">—</td>
+								</tr>
+								<tr id="row-terbit">
+									<td><span class="prayer-icon"><i class="fas fa-sun"></i></span>Matahari Terbit</td>
+									<td id="terbit">—</td>
+								</tr>
+								<tr id="row-dhuhur">
+									<td><span class="prayer-icon"><i class="fas fa-sun"></i></span>Dhuhur</td>
+									<td id="dhuhur">—</td>
+								</tr>
+								<tr id="row-asar">
+									<td><span class="prayer-icon"><i class="fas fa-cloud-sun"></i></span>Asar</td>
+									<td id="asar">—</td>
+								</tr>
+								<tr id="row-tenggelam">
+									<td><span class="prayer-icon"><i class="fas fa-cloud-sun-rain"></i></span>Matahari
+										Tenggelam</td>
+									<td id="tenggelam">—</td>
+								</tr>
+								<tr id="row-magrib">
+									<td><span class="prayer-icon"><i class="fas fa-star"></i></span>Magrib</td>
+									<td id="magrib">—</td>
+								</tr>
+								<tr id="row-isya">
+									<td><span class="prayer-icon"><i class="fas fa-star-and-crescent"></i></span>Isya
+									</td>
+									<td id="isya">—</td>
+								</tr>
+								<tr id="row-tengahMalam">
+									<td><span class="prayer-icon"><i class="fas fa-moon"></i></span>Tengah Malam</td>
+									<td id="tengahMalam">—</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-				</section>
-				<!-- /.content -->
-			</div>
-			<!-- /.content-wrapper -->
 
-			<!-- Footer -->
-			<footer class="main-footer" id="footer"></footer>
-			<script src="../asset/js/layouts/footer.js"></script>
+				</div>
+			</section>
+		</div><!-- /.content-wrapper -->
 
-			<a
-				href="#"
-				class="back-to-top d-flex align-items-center justify-content-center"
-				><i class="bi bi-arrow-up-short"></i
-			></a>
+		<!-- Footer -->
+		<footer class="main-footer" id="footer"></footer>
+		<script src="../asset/js/layouts/footer.js"></script>
 
-			<!-- Control Sidebar -->
-			<aside class="control-sidebar control-sidebar-dark">
-				<!-- Control sidebar content goes here -->
-			</aside>
-			<!-- /.control-sidebar -->
-		</div>
-		<!-- ./wrapper -->
-
-		<a
-			id="back-to-top"
-			href="#"
-			class="btn btn-primary back-to-top"
-			role="button"
-			aria-label="Scroll to top"
-		>
-			<i class="fas fa-chevron-up"></i>
+		<!-- Back to Top -->
+		<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+			<i class="bi bi-arrow-up-short"></i>
 		</a>
 
-		<!-- jQuery -->
-		<script src="../plugins/jquery/jquery.min.js"></script>
-		<!-- Bootstrap 4 -->
-		<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<!-- AdminLTE App -->
-		<script src="../asset/js/adminlte.min.js"></script>
+	</div><!-- /.wrapper -->
 
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				setInterval(() => {
-					const now = new Date();
-					// Format agar dua digit, misalnya 08:05
-					jam = String(now.getHours()).padStart(2, "0");
-					menit = String(now.getMinutes()).padStart(2, "0");
-					detik = String(now.getSeconds()).padStart(2, "0");
-					document.getElementById(
-						"waktu"
-					).innerText = `${jam} : ${menit} : ${detik}`;
-				}, 1000);
+	<!-- jQuery -->
+	<script src="../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE -->
+	<script src="../asset/js/adminlte.min.js"></script>
 
-				function getPrayerTimes() {
-					fetch(
-						"https://api.aladhan.com/v1/timingsByCity?city=Sukoharjo&country=Indonesia&method=2"
-					)
-						.then((response) => response.json())
-						.then((data) => {
-							let timings = data.data.timings;
-							timings.Fajr = mencocokanWaktu(timings.Fajr, "subuh");
-							timings.Asr = mencocokanWaktu(timings.Asr, "asar");
-							timings.Isha = mencocokanWaktu(timings.Isha, "isya");
+	<script>
+		/* ── Clock ── */
+		setInterval(() => {
+			const now = new Date();
+			const h = String(now.getHours()).padStart(2, '0');
+			const m = String(now.getMinutes()).padStart(2, '0');
+			const s = String(now.getSeconds()).padStart(2, '0');
+			document.getElementById('waktu').innerText = `${h} : ${m} : ${s}`;
+		}, 1000);
 
-							document.getElementById("subuh").innerText = timings.Fajr;
-							document.getElementById("terbit").innerText = timings.Sunrise;
-							document.getElementById("dhuhur").innerText = timings.Dhuhr;
-							document.getElementById("asar").innerText = timings.Asr;
-							document.getElementById("tenggelam").innerText = timings.Sunset;
-							document.getElementById("magrib").innerText = timings.Maghrib;
-							document.getElementById("isya").innerText = timings.Isha;
-							document.getElementById("tengahMalam").innerText =
-								timings.Midnight;
+		/* ── City search ── */
+		let currentCity = 'Surakarta';
 
-							const masehi = data.data.date.gregorian;
-							const hijriah = data.data.date.hijri;
-							document.getElementById(
-								"masehi"
-							).innerText = `${masehi.weekday.en}, ${masehi.day} ${masehi.month.en} ${masehi.year}`;
-							document.getElementById(
-								"hijriah"
-							).innerText = `${hijriah.weekday.en}, ${hijriah.day} ${hijriah.month.en} ${hijriah.year}`;
+		function searchCity() {
+			const val = document.getElementById('searchInput').value.trim();
+			if (val) {
+				currentCity = val;
+				document.getElementById('city-name').innerText = val;
+				getPrayerTimes(val);
+			}
+		}
+		document.getElementById('searchInput').addEventListener('keydown', function (e) {
+			if (e.key === 'Enter') searchCity();
+		});
 
-							// Mulai hitung waktu sholat berikutnya
-							mulaiHitungWaktuSelanjutnya(timings);
-						})
-						.catch((error) => console.error("Error fetching data:", error));
+		/* ── Adjust times ── */
+		function adjustTime(data, type) {
+			let [jam, menit] = data.split(':').map(Number);
+			if (type === 'subuh') menit -= 21;
+			if (type === 'asar') menit += 1;
+			if (type === 'isya') menit += 12;
+			if (menit < 0) {
+				jam -= 1;
+				menit += 60;
+			}
+			if (menit >= 60) {
+				jam += 1;
+				menit -= 60;
+			}
+			return `${String(jam).padStart(2,'0')}:${String(menit).padStart(2,'0')}`;
+		}
+
+		function convertToDate(timeStr) {
+			const now = new Date();
+			const [h, m] = timeStr.split(':');
+			return new Date(now.getFullYear(), now.getMonth(), now.getDate(), +h, +m);
+		}
+
+		/* ── LocalStorage helpers ── */
+		const LS_KEY = 'waktu_sholat_cache';
+
+		function getTodayDateStr() {
+			const now = new Date();
+			return `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+		}
+
+		function saveToCache(city, data) {
+			try {
+				const cache = {
+					city: city.toLowerCase(),
+					date: getTodayDateStr(),
+					data: data
+				};
+				localStorage.setItem(LS_KEY, JSON.stringify(cache));
+			} catch (e) {
+				console.warn('Gagal menyimpan ke localStorage:', e);
+			}
+		}
+
+		function loadFromCache(city) {
+			try {
+				const raw = localStorage.getItem(LS_KEY);
+				if (!raw) return null;
+				const cache = JSON.parse(raw);
+				// Cache valid jika kota sama dan tanggal hari ini
+				if (
+					cache.city === city.toLowerCase() &&
+					cache.date === getTodayDateStr()
+				) {
+					return cache.data;
 				}
+			} catch (e) {
+				console.warn('Gagal membaca localStorage:', e);
+			}
+			return null;
+		}
 
-				// Fungsi untuk menghitung waktu sholat berikutnya
-				function mulaiHitungWaktuSelanjutnya(timings) {
-					const now = new Date();
+		/* ── Render prayer data ke DOM ── */
+		function renderPrayerData(data) {
+			const t = data.timings;
+			document.getElementById('subuh').innerText = t.Fajr;
+			document.getElementById('terbit').innerText = t.Sunrise;
+			document.getElementById('dhuhur').innerText = t.Dhuhr;
+			document.getElementById('asar').innerText = t.Asr;
+			document.getElementById('tenggelam').innerText = t.Sunset;
+			document.getElementById('magrib').innerText = t.Maghrib;
+			document.getElementById('isya').innerText = t.Isha;
+			document.getElementById('tengahMalam').innerText = t.Midnight;
 
-					// Konversi waktu sholat dari string ke objek Date
-					const subuh = convertToDate(timings.Fajr);
-					const terbit = convertToDate(timings.Sunrise);
-					const dhuhur = convertToDate(timings.Dhuhr);
-					const asar = convertToDate(timings.Asr);
-					const tenggelam = convertToDate(timings.Sunset);
-					const magrib = convertToDate(timings.Maghrib);
-					const isya = convertToDate(timings.Isha);
-					const tengahMalam = convertToDate(timings.Midnight);
+			const g = data.date.gregorian;
+			const h = data.date.hijri;
+			document.getElementById('masehi').innerText =
+				`${g.weekday.en}, ${g.day} ${g.month.en} ${g.year}`;
+			document.getElementById('hijriah').innerText =
+				`${h.weekday.en}, ${h.day} ${h.month.en} ${h.year}`;
 
-					// Array waktu sholat berurutan
-					const prayers = [
-						{ name: "Subuh", time: subuh, class: "subuh" },
-						{ name: "Matahari Terbit", time: terbit, class: "terbit" },
-						{ name: "Dhuhur", time: dhuhur, class: "dhuhur" },
-						{ name: "Asar", time: asar, class: "asar" },
-						{ name: "Matahari Tenggelam", time: tenggelam, class: "tenggelam" },
-						{ name: "Magrib", time: magrib, class: "magrib" },
-						{ name: "Isya", time: isya, class: "isya" },
-						{ name: "Tengah Malam", time: tengahMalam, class: "tengahMalam" },
-					];
+			startCountdown(t);
+		}
 
-					// Set interval untuk memeriksa waktu setiap detik
-					setInterval(() => {
-						const now = new Date();
-						let nextPrayer = null;
+		/* ── Fetch prayer times (dengan cache localStorage) ── */
+		function getPrayerTimes(city = 'Surakarta') {
+			// Cek cache dulu
+			const cached = loadFromCache(city);
+			if (cached) {
+				console.log(`[Cache] Memuat waktu sholat "${city}" dari localStorage.`);
+				renderPrayerData(cached);
+				return;
+			}
 
-						// Cari waktu sholat berikutnya yang lebih besar dari waktu sekarang
-						for (let prayer of prayers) {
-							if (now < prayer.time) {
-								nextPrayer = prayer;
-								break;
+			// Jika tidak ada cache / kadaluarsa → fetch API
+			console.log(`[API] Mengambil waktu sholat "${city}" dari server...`);
+			fetch(`https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=Indonesia&method=2`)
+				.then(r => r.json())
+				.then(apiData => {
+					const t = apiData.data.timings;
+					t.Fajr = adjustTime(t.Fajr, 'subuh');
+					t.Asr = adjustTime(t.Asr, 'asar');
+					t.Isha = adjustTime(t.Isha, 'isya');
+
+					// Simpan ke localStorage sebelum render
+					saveToCache(city, apiData.data);
+
+					renderPrayerData(apiData.data);
+				})
+				.catch(() => {
+					// Fallback: coba tampilkan cache lama (beda hari) jika ada
+					try {
+						const raw = localStorage.getItem(LS_KEY);
+						if (raw) {
+							const oldCache = JSON.parse(raw);
+							if (oldCache.city === city.toLowerCase()) {
+								console.warn('[Fallback] Menampilkan cache lama karena gagal fetch.');
+								renderPrayerData(oldCache.data);
+								document.getElementById('waktu-selanjutnya').innerHTML =
+									'<span class="next-label">CACHE</span>Data offline (kemarin). Cek koneksi.';
+								return;
 							}
-						} // Jika ada waktu sholat berikutnya, hitung selisih dan tampilkan
-						if (nextPrayer) {
-							const timeDiff = Math.floor((nextPrayer.time - now) / 60000); // Selisih dalam menit
-
-							let jam = Math.floor(timeDiff / 60);
-							let menit = timeDiff % 60; // Mengambil sisa menit sebelum jam
-
-							document
-								.getElementById(nextPrayer.class)
-								.parentElement.classList.add("bg-success");
-
-							document.getElementById(
-								"waktu-selanjutnya"
-							).innerText = `Waktu sholat selanjutnya: ${nextPrayer.name} dalam ${jam} Jam, ${menit} menit`;
-						} else {
-							document.getElementById("waktu-selanjutnya").innerText =
-								"Tidak ada waktu sholat berikutnya hari ini";
 						}
-					}, 1000); // Periksa setiap detik
-				}
+					} catch (e) {}
+					document.getElementById('waktu-selanjutnya').innerHTML =
+						'<span class="next-label">ERROR</span>Gagal memuat data. Cek koneksi.';
+				});
+		}
 
-				// Konversi string waktu (HH:MM) menjadi objek Date pada hari ini
-				function convertToDate(timeString) {
-					const now = new Date();
-					const [jam, menit] = timeString.split(":");
-					return new Date(
-						now.getFullYear(),
-						now.getMonth(),
-						now.getDate(),
-						jam,
-						menit
-					);
-				}
+		/* ── Countdown ── */
+		function startCountdown(t) {
+			const prayers = [{
+					name: 'Subuh',
+					id: 'row-subuh',
+					time: convertToDate(t.Fajr)
+				},
+				{
+					name: 'Matahari Terbit',
+					id: 'row-terbit',
+					time: convertToDate(t.Sunrise)
+				},
+				{
+					name: 'Dhuhur',
+					id: 'row-dhuhur',
+					time: convertToDate(t.Dhuhr)
+				},
+				{
+					name: 'Asar',
+					id: 'row-asar',
+					time: convertToDate(t.Asr)
+				},
+				{
+					name: 'Matahari Tenggelam',
+					id: 'row-tenggelam',
+					time: convertToDate(t.Sunset)
+				},
+				{
+					name: 'Magrib',
+					id: 'row-magrib',
+					time: convertToDate(t.Maghrib)
+				},
+				{
+					name: 'Isya',
+					id: 'row-isya',
+					time: convertToDate(t.Isha)
+				},
+				{
+					name: 'Tengah Malam',
+					id: 'row-tengahMalam',
+					time: convertToDate(t.Midnight)
+				},
+			];
 
-				function mencocokanWaktu(data, waktu) {
-					const now = new Date();
-					let [jam, menit] = data.split(":").map(Number);
-					if (waktu == "subuh") {
-						menit -= 21;
-					} else if (waktu == "asar") {
-						menit += 1;
-					} else if (waktu == "isya") {
-						menit += 12;
+			// Clear old badges
+			document.querySelectorAll('.next-badge').forEach(el => el.remove());
+			document.querySelectorAll('.prayer-table tr').forEach(r => r.classList.remove('active-prayer'));
+
+			setInterval(() => {
+				const now = new Date();
+				let next = null;
+				for (const p of prayers) {
+					if (now < p.time) {
+						next = p;
+						break;
 					}
-
-					// Jika menit negatif, kurangi jam dan atur menit kembali dalam rentang 0-59
-					if (menit < 0) {
-						jam -= 1;
-						menit += 60;
-					}
-
-					// Format agar dua digit, misalnya 08:05
-					jam = String(jam).padStart(2, "0");
-					menit = String(menit).padStart(2, "0");
-
-					return `${jam}:${menit}`;
 				}
 
-				// Get prayer times on page load
-				window.onload = getPrayerTimes;
+				// Reset highlights
+				document.querySelectorAll('.prayer-table tr').forEach(r => r.classList.remove('active-prayer'));
+				document.querySelectorAll('.next-badge').forEach(el => el.remove());
+
+				if (next) {
+					const diff = Math.floor((next.time - now) / 60000);
+					const jam = Math.floor(diff / 60);
+					const menit = diff % 60;
+					const label = jam > 0 ? `${jam} jam ${menit} menit` : `${menit} menit`;
+
+					document.getElementById('waktu-selanjutnya').innerHTML =
+						`<span class="next-label">BERIKUTNYA</span>${next.name} dalam ${label}`;
+
+					const row = document.getElementById(next.id);
+					if (row) {
+						row.classList.add('active-prayer');
+						const firstTd = row.querySelector('td');
+						if (firstTd) {
+							const badge = document.createElement('span');
+							badge.className = 'next-badge';
+							badge.textContent = 'SELANJUTNYA';
+							firstTd.appendChild(badge);
+						}
+					}
+				} else {
+					document.getElementById('waktu-selanjutnya').innerHTML =
+						'<span class="next-label">INFO</span>Tidak ada waktu sholat berikutnya hari ini';
+				}
+			}, 1000);
+		}
+
+		/* ── Back to Top ── */
+		(function () {
+			const btn = document.querySelector('.back-to-top');
+			window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 200), {
+				passive: true
 			});
-		</script>
-	</body>
+			btn.addEventListener('click', e => {
+				e.preventDefault();
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+		})();
+
+		/* ── Init ── */
+		getPrayerTimes('Surakarta');
+	</script>
+</body>
+
 </html>

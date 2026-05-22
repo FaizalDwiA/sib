@@ -1,10 +1,12 @@
 const footerHTML = `
-<div class="float-right d-none d-sm-block">
-    <b>Version</b> 1.0.0
-</div>
-<strong>Copyright &copy; 2025 <a href="https://faizaldwia.github.io/portofolio/index.html">Faizal Dwi Al
-        Farizi</a>.</strong> All rights
-reserved.
+    <strong style="margin: auto;">Copyright &copy; 2025 
+        <a href="https://faizaldwia.github.io/portofolio/index.html">Faizal Dwi Al Farizi</a>
+    </strong>
+
+    <!-- Back to Top -->
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center" style="color: #fff !important; text-decoration: none !important">
+		<i class="bi bi-arrow-up-short"></i>
+	</a>
 `;
 
 function injectHTML(selector, html, callback) {

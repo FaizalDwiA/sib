@@ -1,7 +1,7 @@
 const sidebarHTML = `
 <!-- Brand Logo -->
 <a href="waktu_sholat.html" class="brand-link">
-    <img src="../asset/img/logo/sib.webp" alt="TRPL B" class="brand-image img-circle bg-white elevation-3"
+    <img src="../asset/img/logo/trpl512.webp" alt="TRPL B" class="brand-image img-circle bg-white elevation-3"
         style="opacity: .8">
     <span class="brand-text font-weight-light">TRPL B</span>
 </a>
@@ -11,7 +11,7 @@ const sidebarHTML = `
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="../asset/img/logo/sib.webp" class="img-circle bg-white elevation-2" alt="User Image">
+            <img src="../asset/img/logo/trpl512.webp" class="img-circle bg-white elevation-2" alt="User Image">
         </div>
         <div class="info">
             <a href="sib.html" class="d-block">Faizal Dwi Al Farizi</a>

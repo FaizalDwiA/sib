@@ -1,0 +1,478 @@
+/*
+ * fda.css — Custom Theme: Navbar · Sidebar · Footer
+ * Sistem Informasi B | Faizal Dwi Al Farizi
+ * Tema: Academic / University — Angkatan 2021
+ * Load setelah adminlte.min.css
+ */
+
+/* ════════════════════════════════════════
+   VARIABEL
+════════════════════════════════════════ */
+:root {
+  --nav-height: 57px;
+
+  /* Navbar */
+  --nav-bg: #ffffff;
+  --nav-border: #dde4f0;
+  --nav-text: #1a3a6b;
+  --nav-icon: #4b6fa5;
+  --nav-hover: #f0f4fb;
+
+  /* Sidebar */
+  --sb-bg: #0f2144;
+  --sb-brand-bg: #091730;
+  --sb-gold: #c8952a;
+  --sb-text: rgba(255, 255, 255, .72);
+  --sb-hover: rgba(255, 255, 255, .07);
+  --sb-active: #1a3a6b;
+
+  /* Footer */
+  --ft-bg: #0f2144;
+  --ft-text: rgba(255, 255, 255, .5);
+  --ft-gold: #c8952a;
+  --ft-border: rgba(200, 149, 42, .3);
+}
+
+
+/* ════════════════════════════════════════
+   NAVBAR
+   Diisi oleh navbar.js → #navbar
+   HTML: pushmenu button + "Home" link
+════════════════════════════════════════ */
+
+.main-header.navbar {
+  background: var(--nav-bg) !important;
+  border-bottom: 2px solid var(--nav-border);
+  box-shadow: 0 2px 14px rgba(26, 58, 107, .08);
+  min-height: var(--nav-height);
+  padding: 0;
+}
+
+/* Tombol hamburger */
+.main-header .nav-link[data-widget="pushmenu"] {
+  color: var(--nav-icon);
+  font-size: 17px;
+  width: var(--nav-height);
+  height: var(--nav-height);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid transparent;
+  transition: background .18s, color .18s;
+}
+
+.main-header .nav-link[data-widget="pushmenu"]:hover {
+  background: var(--nav-hover);
+  color: var(--nav-text);
+}
+
+/* Link teks (Home, dll) */
+.main-header .navbar-nav .nav-link {
+  color: var(--nav-icon);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 16px;
+  height: var(--nav-height);
+  display: flex !important;
+  align-items: center;
+  border-bottom: 3px solid transparent;
+  letter-spacing: .01em;
+  transition: background .18s, color .18s, border-color .18s;
+}
+
+.main-header .navbar-nav .nav-link:hover {
+  background: var(--nav-hover);
+  color: var(--nav-text);
+  border-bottom-color: var(--sb-gold);
+}
+
+/* Hapus border-bottom pada pushmenu */
+.main-header .nav-link[data-widget="pushmenu"] {
+  border-bottom: none !important;
+  padding: 0 !important;
+}
+
+
+/* ════════════════════════════════════════
+   SIDEBAR
+   Diisi oleh sidebar.js → #sidebar
+   HTML: brand-link · user-panel · search · nav
+════════════════════════════════════════ */
+
+/* Container */
+.main-sidebar {
+  background: var(--sb-bg) !important;
+  box-shadow: 3px 0 20px rgba(0, 0, 0, .28) !important;
+}
+
+/* ── Brand: logo sib.webp + "TRPL B" ── */
+.brand-link {
+  background: var(--sb-brand-bg) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .06) !important;
+  padding: 11px 16px !important;
+  min-height: var(--nav-height);
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  position: relative;
+  transition: background .18s !important;
+}
+
+.brand-link:hover {
+  background: rgba(255, 255, 255, .03) !important;
+}
+
+/* Garis emas di bawah brand */
+.brand-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sb-gold) 0%, transparent 100%);
+}
+
+.brand-link .brand-image {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  margin: 0 !important;
+  border: 2px solid rgba(200, 149, 42, .45) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .4) !important;
+  object-fit: cover !important;
+  flex-shrink: 0;
+}
+
+.brand-link .brand-text {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: .06em !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+/* ── User panel: foto + "Faizal Dwi Al Farizi" ── */
+.sidebar .user-panel {
+  align-items: center;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .07) !important;
+  margin-top: 0 !important;
+}
+
+.sidebar .user-panel .image {
+  margin-right: 0;
+}
+
+.sidebar .user-panel .image img {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--sb-gold) !important;
+  object-fit: cover !important;
+}
+
+.sidebar .user-panel .info {
+  padding-left: 10px;
+  line-height: 1;
+}
+
+.sidebar .user-panel .info a {
+  color: #fff !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  display: block !important;
+}
+
+.sidebar .user-panel .info a:hover {
+  color: var(--sb-gold) !important;
+}
+
+/* Dot status online setelah nama */
+.sidebar .user-panel .info a::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 4px rgba(34, 197, 94, .6);
+  margin-left: 7px;
+  vertical-align: middle;
+}
+
+/* ── Search form ── */
+.sidebar .form-inline {
+  padding: 10px 12px 6px !important;
+}
+
+.sidebar .form-control-sidebar {
+  background: rgba(255, 255, 255, .07) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-right: none !important;
+  color: #fff !important;
+  border-radius: 8px 0 0 8px !important;
+  font-size: 12px !important;
+  height: 34px !important;
+  transition: background .18s, border-color .18s !important;
+}
+
+.sidebar .form-control-sidebar::placeholder {
+  color: rgba(255, 255, 255, .28) !important;
+}
+
+.sidebar .form-control-sidebar:focus {
+  background: rgba(255, 255, 255, .12) !important;
+  border-color: var(--sb-gold) !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+.sidebar .btn-sidebar {
+  background: rgba(255, 255, 255, .08) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-left: none !important;
+  color: rgba(255, 255, 255, .5) !important;
+  border-radius: 0 8px 8px 0 !important;
+  height: 34px !important;
+  transition: background .18s, color .18s !important;
+}
+
+.sidebar .btn-sidebar:hover {
+  background: rgba(200, 149, 42, .18) !important;
+  color: var(--sb-gold) !important;
+}
+
+/* ── Nav menu (nav-pills nav-sidebar) ── */
+.nav-sidebar {
+  padding: 4px 8px 12px !important;
+}
+
+/* nav-item */
+.nav-sidebar .nav-item {
+  margin: 2px 0 !important;
+  border-radius: 8px !important;
+}
+
+/* nav-link */
+.nav-sidebar .nav-item>.nav-link {
+  width: inherit !important;
+  border-radius: 8px !important;
+  padding: 8px 10px !important;
+  color: var(--sb-text) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  position: relative !important;
+  transition: background .18s, color .18s !important;
+}
+
+.nav-sidebar .nav-item>.nav-link:hover {
+  background: var(--sb-hover) !important;
+  color: #fff !important;
+}
+
+/* Icon kotak (fa-mosque, fa-users, fa-bullseye, dll) */
+.nav-sidebar .nav-item>.nav-link>.nav-icon {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 7px !important;
+  background: rgba(255, 255, 255, .08) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, .6) !important;
+  flex-shrink: 0 !important;
+  margin-right: 10px !important;
+  transition: background .18s, color .18s !important;
+}
+
+.nav-sidebar .nav-item>.nav-link:hover>.nav-icon {
+  background: rgba(200, 149, 42, .18) !important;
+  color: var(--sb-gold) !important;
+}
+
+/* Teks label */
+.nav-sidebar .nav-item>.nav-link>p {
+  margin: 0 !important;
+  line-height: 1 !important;
+  flex: 1;
+}
+
+/* ── State AKTIF ── */
+.nav-sidebar .nav-item>.nav-link.active {
+  background: var(--sb-active) !important;
+  color: #fff !important;
+  box-shadow: 0 3px 12px rgba(26, 58, 107, .45) !important;
+}
+
+.nav-sidebar .nav-item>.nav-link.active>.nav-icon {
+  background: rgba(200, 149, 42, .25) !important;
+  color: var(--sb-gold) !important;
+}
+
+/* Garis emas kiri */
+.nav-sidebar .nav-item>.nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--sb-gold);
+}
+
+/* ── Logout item (class bg-danger dari sidebar.js) ── */
+.nav-sidebar .nav-item.bg-danger {
+  background: transparent !important;
+  margin-top: 10px !important;
+}
+
+.nav-sidebar .nav-item.bg-danger>.nav-link {
+  background: rgba(185, 28, 28, .22) !important;
+  color: #fca5a5 !important;
+  border: 1px solid rgba(185, 28, 28, .35) !important;
+}
+
+.nav-sidebar .nav-item.bg-danger>.nav-link:hover {
+  background: rgba(185, 28, 28, .4) !important;
+  color: #fff !important;
+}
+
+.nav-sidebar .nav-item.bg-danger>.nav-link>.nav-icon {
+  background: rgba(185, 28, 28, .3) !important;
+  color: #fca5a5 !important;
+}
+
+/* ── Scrollbar ── */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .1) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .1);
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, .2);
+}
+
+
+/* ════════════════════════════════════════
+   FOOTER
+   Diisi oleh footer.js → #footer
+   HTML: .float-right "Version 1.0.0"
+         + "Copyright © 2025 <a>Faizal...</a>. All rights reserved."
+════════════════════════════════════════ */
+
+footer#footer,
+.main-footer {
+  background: var(--ft-bg) !important;
+  border-top: 2px solid var(--ft-border) !important;
+  padding: 13px 24px !important;
+  color: var(--ft-text) !important;
+  font-family: 'Nunito', 'Source Sans Pro', sans-serif !important;
+  font-size: 12px !important;
+  box-shadow: 0 -3px 16px rgba(0, 0, 0, .22) !important;
+  display: flex !important;
+  align-items: center !important;
+  min-height: 46px;
+}
+
+/* "Copyright © 2025" — teks biasa */
+footer#footer strong,
+.main-footer strong {
+  color: rgba(255, 255, 255, .75) !important;
+  font-weight: 700 !important;
+}
+
+/* Link nama Faizal */
+footer#footer a,
+.main-footer a {
+  color: var(--ft-gold) !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: color .18s !important;
+}
+
+footer#footer a:hover,
+.main-footer a:hover {
+  color: #e0b050 !important;
+  text-decoration: underline !important;
+}
+
+/* "Version 1.0.0" di kanan */
+footer#footer .float-right,
+.main-footer .float-right {
+  color: rgba(255, 255, 255, .3) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: .04em !important;
+}
+
+footer#footer .float-right b,
+.main-footer .float-right b {
+  color: var(--ft-gold) !important;
+}
+
+/* Back to up */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #1a3a6b;
+  color: #fff;
+  /* font-size: 22px; */
+  box-shadow: 0 4px 16px rgba(26, 58, 107, .35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .25s, visibility .25s, transform .25s, background .18s;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.back-to-top:hover {
+  background: #2055a4;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(26, 58, 107, .45);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Arrow icon via CSS — fallback jika Bootstrap Icons belum di-load */
+.back-to-top .bi-arrow-up-short::before {
+  content: "\2191";
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: sans-serif;
+}

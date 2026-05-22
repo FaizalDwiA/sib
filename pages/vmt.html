@@ -1,29 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Visi Misi & Tujuan — D4 TRPL</title>
+    <meta name="author" content="Faizal Dwi Al Farizi">
 
-    <title>Visi Misi & Tujuan TRPL B</title>
-    <meta content="Author" name="Faizal Dwi Al Farizi">
-    <meta content="Bismillah" name="description">
-    <meta content="Syiber" name="keywords">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="asset/img/logo/sib.ico" type="image/x-icon" />
 
-    <!-- Logo -->
-		<link
-			rel="shortcut icon"
-			href="asset/img/logo/sib.ico"
-			type="image/x-icon"
-		/>
-
-    <!-- Google Font: Source Sans Pro -->
+    <!-- Fonts — sama dengan sib.html -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" />
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
+    <!-- AdminLTE -->
     <link rel="stylesheet" href="../asset/css/adminlte.min.css">
+    <!-- Custom FDA -->
+    <link rel="stylesheet" href="../asset/css/fda.css">
+
+    <style>
+        :root {
+            --univ-blue: #1a3a6b;
+            --univ-blue2: #2055a4;
+            --univ-gold: #c8952a;
+            --univ-gold2: #e8b84b;
+            --bg-page: #eef2f7;
+            --shadow-card: 0 4px 24px rgba(26, 58, 107, .10);
+            --shadow-hover: 0 12px 40px rgba(26, 58, 107, .20);
+            --card-radius: 16px;
+
+            /* per-section accent */
+            --visi-a: #1a3a6b;
+            --visi-b: #2563a8;
+            --misi-a: #14532d;
+            --misi-b: #16a34a;
+            --tujuan-a: #7f1d1d;
+            --tujuan-b: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-page);
+        }
+
+        .content-wrapper {
+            background: var(--bg-page);
+        }
+
+        /* ── Page Header ── */
+        .content-header {
+            background: linear-gradient(110deg, #0f2144 0%, #1a3a6b 55%, #2563a8 100%);
+            padding: 20px 28px 18px;
+            box-shadow: 0 4px 20px rgba(15, 33, 68, .4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 15% 50%, rgba(200, 149, 42, .12) 0%, transparent 55%),
+                radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .06) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        .content-header h1 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            position: relative;
+            letter-spacing: -.01em;
+        }
+
+        .content-header h1 .header-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(200, 149, 42, .25);
+            border: 1px solid rgba(200, 149, 42, .4);
+            font-size: 15px;
+            color: var(--univ-gold2);
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .content-header .breadcrumb {
+            background: transparent;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .content-header .breadcrumb-item,
+        .content-header .breadcrumb-item+.breadcrumb-item::before {
+            color: rgba(255, 255, 255, .55);
+            font-size: 12px;
+        }
+
+        .content-header .breadcrumb-item.active {
+            color: rgba(255, 255, 255, .9);
+        }
+
+        .content-header .breadcrumb-item a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+        }
+
+        /* ── Accordion Section ── */
+        .vmt-section {
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(221, 228, 240, .5);
+            margin-bottom: 20px;
+            background: #fff;
+            animation: fadeUp .38s both;
+        }
+
+        .vmt-section:nth-child(1) {
+            animation-delay: 60ms;
+        }
+
+        .vmt-section:nth-child(2) {
+            animation-delay: 130ms;
+        }
+
+        .vmt-section:nth-child(3) {
+            animation-delay: 200ms;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section toggle header */
+        .vmt-toggle {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            cursor: pointer;
+            text-decoration: none !important;
+            position: relative;
+            transition: filter .18s;
+        }
+
+        .vmt-toggle:hover {
+            filter: brightness(1.06);
+        }
+
+        .vmt-toggle.visi-head {
+            background: linear-gradient(110deg, var(--visi-a) 0%, var(--visi-b) 100%);
+        }
+
+        .vmt-toggle.misi-head {
+            background: linear-gradient(110deg, var(--misi-a) 0%, var(--misi-b) 100%);
+        }
+
+        .vmt-toggle.tujuan-head {
+            background: linear-gradient(110deg, var(--tujuan-a) 0%, var(--tujuan-b) 100%);
+        }
+
+        /* shimmer overlay */
+        .vmt-toggle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 85% 30%, rgba(255, 255, 255, .14) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        /* icon box */
+        .toggle-icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            color: #fff;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .vmt-toggle h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            letter-spacing: -.01em;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+            position: relative;
+        }
+
+        /* chevron */
+        .toggle-chevron {
+            margin-left: auto;
+            font-size: 18px;
+            color: rgba(255, 255, 255, .7);
+            transition: transform .28s cubic-bezier(.34, 1.56, .64, 1);
+            position: relative;
+        }
+
+        .vmt-toggle[aria-expanded="true"] .toggle-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* ── Body ── */
+        .vmt-body {
+            padding: 28px 26px 26px;
+        }
+
+        /* Section title inside body */
+        .vmt-body-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--univ-blue);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eef2f7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vmt-body-title .title-bar {
+            width: 4px;
+            height: 22px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .visi-bar {
+            background: linear-gradient(180deg, var(--visi-a), var(--visi-b));
+        }
+
+        .misi-bar {
+            background: linear-gradient(180deg, var(--misi-a), var(--misi-b));
+        }
+
+        .tujuan-bar {
+            background: linear-gradient(180deg, var(--tujuan-a), var(--tujuan-b));
+        }
+
+        /* Visi — single paragraph styled */
+        .visi-text {
+            font-size: 14.5px;
+            line-height: 1.8;
+            color: #334155;
+            background: #f8fafc;
+            border-left: 4px solid var(--visi-b);
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            font-style: italic;
+        }
+
+        /* List items (Misi & Tujuan) */
+        .vmt-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .vmt-list li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background: #f8fafc;
+            border: 1px solid #eef2f7;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #334155;
+            transition: box-shadow .18s, border-color .18s;
+        }
+
+        .vmt-list li:hover {
+            box-shadow: 0 4px 14px rgba(26, 58, 107, .08);
+            border-color: #dde4f0;
+        }
+
+        .list-num {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            margin-top: 1px;
+        }
+
+        .misi-num {
+            background: linear-gradient(135deg, var(--misi-a), var(--misi-b));
+        }
+
+        .tujuan-num {
+            background: linear-gradient(135deg, var(--tujuan-a), var(--tujuan-b));
+        }
+
+        /* ── Footer ── */
+        footer#footer,
+        .main-footer {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 12px !important;
+            justify-content: center !important;
+            text-align: center !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+            gap: 4px !important;
+        }
+
+        footer#footer .float-right,
+        .main-footer .float-right {
+            display: none !important;
+        }
+
+        /* ── Back to Top ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--univ-blue);
+            color: #fff;
+            font-size: 22px;
+            box-shadow: 0 4px 16px rgba(26, 58, 107, .35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity .25s, visibility .25s, transform .25s, background .18s;
+            z-index: 9999;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top:hover {
+            background: var(--univ-blue2);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(26, 58, 107, .45);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top .bi-arrow-up-short::before {
+            content: "\2191";
+            font-style: normal;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1;
+            font-family: sans-serif;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -33,171 +404,223 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light" id="navbar"></nav>
         <script src="../asset/js/layouts/navbar.js"></script>
 
-        <!-- Main Sidebar Container -->
+        <!-- Sidebar -->
         <aside class="main-sidebar sidebar-dark-teal elevation-4" id="sidebar"></aside>
         <script src="../asset/js/layouts/sidebar.js"></script>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="min-height: 719.812px;">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+
+            <!-- Page Header -->
+            <section class="content-header mb-3">
                 <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Visi, Misi, & Tujuan D4 TRPL</h1>
+                    <div class="row align-items-center">
+                        <div class="col-sm-7">
+                            <h1>
+                                <span class="header-icon"><i class="fas fa-bullseye"></i></span>
+                                Visi, Misi &amp; Tujuan D4 TRPL
+                            </h1>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item">Polinus</li>
+                                <li class="breadcrumb-item"><a href="waktu_sholat.html"><i
+                                            class="fas fa-home mr-1"></i>TRPLB</a></li>
                                 <li class="breadcrumb-item active">VMT</li>
                             </ol>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
 
-            <!-- Main content -->
+            <!-- Main Content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div class="row"></div>
-                    <div class="col-12" id="accordion">
-                        <div class="card">
-                            <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseVisi"
-                                aria-expanded="false">
-                                <div class="card-header bg-primary">
-                                    <h4 class="card-title w-100">
-                                        <i class="fas fa-eye icon mr-2"></i>
-                                        Visi
-                                    </h4>
+                    <div id="vmt-accordion">
+
+                        <!-- VISI -->
+                        <div class="vmt-section">
+                            <a class="vmt-toggle visi-head d-block" data-toggle="collapse" href="#collapseVisi"
+                                aria-expanded="false" role="button">
+                                <div class="toggle-icon-box">
+                                    <i class="fas fa-eye"></i>
                                 </div>
+                                <h4>Visi</h4>
+                                <i class="fas fa-chevron-down toggle-chevron"></i>
                             </a>
-                            <div id="collapseVisi" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    <h2 class="mb-4 text-center">Visi</h2>
-                                    Menjadi pusat pendidikan vokasi unggulan sebagai rujukan industri di bidang
-                                    teknologi
-                                    rekayasa perangkat lunak berbasis kecerdasan buatan dalam menghasilkan sumber daya
-                                    manusia profesional yang mampu bersaing ditingkat global pada tahun 2027
+                            <div id="collapseVisi" class="collapse" data-parent="#vmt-accordion">
+                                <div class="vmt-body">
+                                    <div class="vmt-body-title">
+                                        <span class="title-bar visi-bar"></span>
+                                        Visi Program Studi
+                                    </div>
+                                    <p class="visi-text">
+                                        Menjadi pusat pendidikan vokasi unggulan sebagai rujukan industri di bidang
+                                        teknologi rekayasa perangkat lunak berbasis kecerdasan buatan dalam menghasilkan
+                                        sumber daya manusia profesional yang mampu bersaing di tingkat global pada tahun
+                                        2027.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseMisi"
-                                aria-expanded="false">
-                                <div class="card-header bg-success">
-                                    <h4 class="card-title w-100">
-                                        <i class="fas fa-flag icon mr-2"></i>
-                                        Misi
-                                    </h4>
+
+                        <!-- MISI -->
+                        <div class="vmt-section">
+                            <a class="vmt-toggle misi-head d-block" data-toggle="collapse" href="#collapseMisi"
+                                aria-expanded="false" role="button">
+                                <div class="toggle-icon-box">
+                                    <i class="fas fa-flag"></i>
                                 </div>
+                                <h4>Misi</h4>
+                                <i class="fas fa-chevron-down toggle-chevron"></i>
                             </a>
-                            <div id="collapseMisi" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    <h2 class="mb-4 text-center">Misi</h2>
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item">
-                                            1. Menyelenggarakan pendidikan profesional di bidang business services
-                                            analyst,
-                                            perangkat rekayasa lunak (software engineer) dan technopreneur/start-up yang
-                                            berwawasan global berjiwa pancasila dan bermoral berbudi pekert luhur dan
-                                            mengadaptasi perkembangan ipteks dengan menggunakan kurikulum yang
-                                            fleksibel,
-                                            berkelanjutan dan sesuai kebutuhan dunia usaha dan dunia industri
+                            <div id="collapseMisi" class="collapse" data-parent="#vmt-accordion">
+                                <div class="vmt-body">
+                                    <div class="vmt-body-title">
+                                        <span class="title-bar misi-bar"></span>
+                                        Misi Program Studi
+                                    </div>
+                                    <ul class="vmt-list">
+                                        <li>
+                                            <span class="list-num misi-num">1</span>
+                                            <span>Menyelenggarakan pendidikan profesional di bidang business services
+                                                analyst,
+                                                perangkat rekayasa lunak (software engineer) dan technopreneur/start-up
+                                                yang
+                                                berwawasan global, berjiwa pancasila dan bermoral berbudi pekerti luhur,
+                                                serta
+                                                mengadaptasi perkembangan ipteks dengan menggunakan kurikulum yang
+                                                fleksibel,
+                                                berkelanjutan dan sesuai kebutuhan dunia usaha dan dunia
+                                                industri.</span>
                                         </li>
-                                        <li class="list-group-item">
-                                            2. Melaksanakan penelitian di bidang rekayasa perangkat lunak berbasis
-                                            kecerdasan
-                                            buatan untuk meningkatkan daya saing bangsa
+                                        <li>
+                                            <span class="list-num misi-num">2</span>
+                                            <span>Melaksanakan penelitian di bidang rekayasa perangkat lunak berbasis
+                                                kecerdasan
+                                                buatan untuk meningkatkan daya saing bangsa.</span>
                                         </li>
-                                        <li class="list-group-item">
-                                            3. Melaksanakan pengabdian masyarakat untuk menempatkan ilmu pengetahuan dan
-                                            teknologi di bidang rekayasa perangkat lunak berbasis kecerdasan buatan
-                                            secara
-                                            benar dan tepat sesuai
+                                        <li>
+                                            <span class="list-num misi-num">3</span>
+                                            <span>Melaksanakan pengabdian masyarakat untuk menempatkan ilmu pengetahuan
+                                                dan
+                                                teknologi di bidang rekayasa perangkat lunak berbasis kecerdasan buatan
+                                                secara
+                                                benar dan tepat sesuai dengan kebutuhan masyarakat.</span>
                                         </li>
-                                    </ol>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <a class="d-block w-100" data-toggle="collapse" href="#collapseTujuan" aria-expanded="true">
-                                <div class="card-header bg-danger">
-                                    <h4 class="card-title w-100">
-                                        <i class="fas fa-star icon mr-2"></i>
-                                        Tujuan
-                                    </h4>
+
+                        <!-- TUJUAN -->
+                        <div class="vmt-section">
+                            <a class="vmt-toggle tujuan-head d-block" data-toggle="collapse" href="#collapseTujuan"
+                                aria-expanded="false" role="button">
+                                <div class="toggle-icon-box">
+                                    <i class="fas fa-star"></i>
                                 </div>
+                                <h4>Tujuan</h4>
+                                <i class="fas fa-chevron-down toggle-chevron"></i>
                             </a>
-                            <div id="collapseTujuan" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    <h2 class="mb-4 text-center">Tujuan</h2>
-                                    <ol class="list-group list-group-numbered">
-                                        <li class="list-group-item">
-                                            1. Menghasilkan sumber daya manusia pad bidang business services analyst,
-                                            rekayasa perangkat lunak (software engineer) dan technopreneur / start-up
-                                            yang
-                                            berwawasan luas, berjiwa pancasila dan bermoral berbudi perkerti yang luhur
-                                            dan
-                                            mengadaptasi perkembangan ipteks dengan menggunakan kurikulum yang fleksibel
-                                            berkelanjutan dan sesuai kebutuhan dunia usaha dan dunia industri
+                            <div id="collapseTujuan" class="collapse" data-parent="#vmt-accordion">
+                                <div class="vmt-body">
+                                    <div class="vmt-body-title">
+                                        <span class="title-bar tujuan-bar"></span>
+                                        Tujuan Program Studi
+                                    </div>
+                                    <ul class="vmt-list">
+                                        <li>
+                                            <span class="list-num tujuan-num">1</span>
+                                            <span>Menghasilkan sumber daya manusia di bidang business services analyst,
+                                                rekayasa perangkat lunak (software engineer) dan technopreneur/start-up
+                                                yang
+                                                berwawasan luas, berjiwa pancasila dan bermoral berbudi pekerti luhur,
+                                                serta
+                                                mengadaptasi perkembangan ipteks dengan kurikulum yang fleksibel,
+                                                berkelanjutan
+                                                dan sesuai kebutuhan dunia usaha dan industri.</span>
                                         </li>
-                                        <li class="list-group-item">
-                                            2. Menghasilkan penelitian unggulan di bidang rekayasa perangkat lunak
-                                            berbasis
-                                            kecerdasan buatan yang dapat digunakan untuk kesejahteraan manusia pada
-                                            umumnya
+                                        <li>
+                                            <span class="list-num tujuan-num">2</span>
+                                            <span>Menghasilkan penelitian unggulan di bidang rekayasa perangkat lunak
+                                                berbasis
+                                                kecerdasan buatan yang dapat digunakan untuk kesejahteraan manusia pada
+                                                umumnya.</span>
                                         </li>
-                                        <li class="list-group-item">
-                                            3. Menghasilkan pengabdian kepada masyarakat untuk menempatkan ilmu
-                                            pengetahuan
-                                            dan teknologi dibidang rekayasa perangkat lunak berbasis kecerdasan buatan
-                                            secara benar dan tepat sesuai dengan situasi masyarakat dan tuntutan
-                                            pembangunan
+                                        <li>
+                                            <span class="list-num tujuan-num">3</span>
+                                            <span>Menghasilkan pengabdian kepada masyarakat untuk menempatkan ilmu
+                                                pengetahuan
+                                                dan teknologi di bidang rekayasa perangkat lunak berbasis kecerdasan
+                                                buatan
+                                                secara benar dan tepat sesuai dengan situasi masyarakat dan tuntutan
+                                                pembangunan.</span>
                                         </li>
-                                        <li class="list-group-item">
-                                            4. Menghasilkan kerjasama tingkat nasional maupun internasional dengan
-                                            berbagai
-                                            pihak untuk kemajuan institusi
+                                        <li>
+                                            <span class="list-num tujuan-num">4</span>
+                                            <span>Menghasilkan kerjasama tingkat nasional maupun internasional dengan
+                                                berbagai
+                                                pihak untuk kemajuan institusi.</span>
                                         </li>
-                                    </ol>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-        </div>
-        <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
-    <!-- Footer -->
-    <footer class="main-footer" id="footer"></footer>
-    <script src="../asset/js/layouts/footer.js"></script>
+                    </div><!-- /#vmt-accordion -->
+                </div><!-- /.container-fluid -->
+            </section>
+        </div><!-- /.content-wrapper -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+        <!-- Footer -->
+        <footer class="main-footer" id="footer"></footer>
+        <script src="../asset/js/layouts/footer.js"></script>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
 
-    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
-        <i class="fas fa-chevron-up"></i>
-    </a>
+    </div><!-- /.wrapper -->
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
+    <!-- AdminLTE -->
     <script src="../asset/js/adminlte.min.js"></script>
+
+    <script>
+        // Back to top
+        (function () {
+            const btn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function () {
+                btn.classList.toggle('show', window.scrollY > 200);
+            }, {
+                passive: true
+            });
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        })();
+
+        // Sync aria-expanded untuk animasi chevron
+        document.querySelectorAll('.vmt-toggle').forEach(function (toggle) {
+            const target = document.querySelector(toggle.getAttribute('href'));
+            if (!target) return;
+            target.addEventListener('show.bs.collapse', function () {
+                toggle.setAttribute('aria-expanded', 'true');
+            });
+            target.addEventListener('hide.bs.collapse', function () {
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+
 </body>
 
 </html>

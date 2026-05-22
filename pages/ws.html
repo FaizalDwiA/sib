@@ -1,241 +1,465 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<html lang="id">
 
-		<title>Website Polinus</title>
-		<meta content="Author" name="Faizal Dwi Al Farizi" />
-		<meta content="Bismillah" name="description" />
-		<meta content="Syiber" name="keywords" />
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Website & Sosmed — Polinus</title>
+	<meta name="author" content="Faizal Dwi Al Farizi" />
 
-		<!-- Logo -->
-		<link
-			rel="shortcut icon"
-			href="asset/img/logo/sib.ico"
-			type="image/x-icon"
-		/>
+	<link rel="shortcut icon" href="asset/img/logo/sib.ico" type="image/x-icon" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" />
+	<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
+	<link rel="stylesheet" href="../asset/css/adminlte.min.css" />
+	<link rel="stylesheet" href="../asset/css/fda.css" />
 
-		<!-- Google Font: Source Sans Pro -->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback"
-		/>
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
-		<!-- Theme style -->
-		<link rel="stylesheet" href="../asset/css/adminlte.min.css" />
-	</head>
+	<style>
+		:root {
+			--univ-blue: #1a3a6b;
+			--univ-blue2: #2055a4;
+			--univ-gold: #c8952a;
+			--univ-gold2: #e8b84b;
+			--bg-page: #eef2f7;
+			--card-radius: 16px;
+			--shadow-card: 0 4px 24px rgba(26, 58, 107, .10);
+			--shadow-hover: 0 12px 40px rgba(26, 58, 107, .22);
+		}
 
-	<body class="hold-transition sidebar-mini">
-		<div class="wrapper">
-			<!-- Navbar -->
-			<nav
-				class="main-header navbar navbar-expand navbar-white navbar-light"
-				id="navbar"
-			></nav>
-			<script src="../asset/js/layouts/navbar.js"></script>
+		* {
+			box-sizing: border-box;
+		}
 
-			<!-- Main Sidebar Container -->
-			<aside
-				class="main-sidebar sidebar-dark-teal elevation-4"
-				id="sidebar"
-			></aside>
-			<script src="../asset/js/layouts/sidebar.js"></script>
+		body {
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			background: var(--bg-page);
+		}
 
-			<!-- Content Wrapper. Contains page content -->
-			<div class="content-wrapper" style="min-height: 719.812px">
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1>Website & Sosmed Polinus</h1>
-							</div>
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item">Polinus</li>
-									<li class="breadcrumb-item active">Website & Sosmed</li>
-								</ol>
-							</div>
+		.content-wrapper {
+			background: var(--bg-page);
+		}
+
+		/* ── Page Header ── */
+		.content-header {
+			background: linear-gradient(110deg, #0f2144 0%, #1a3a6b 55%, #2563a8 100%);
+			padding: 20px 28px 18px;
+			box-shadow: 0 4px 20px rgba(15, 33, 68, .4);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.content-header::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at 15% 50%, rgba(200, 149, 42, .12) 0%, transparent 55%),
+				radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .06) 0%, transparent 45%);
+			pointer-events: none;
+		}
+
+		.content-header h1 {
+			color: #fff;
+			font-family: 'Playfair Display', serif;
+			font-size: 22px;
+			font-weight: 700;
+			margin: 0;
+			position: relative;
+			letter-spacing: -.01em;
+		}
+
+		.content-header h1 .header-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			border-radius: 10px;
+			background: rgba(200, 149, 42, .25);
+			border: 1px solid rgba(200, 149, 42, .4);
+			font-size: 15px;
+			color: var(--univ-gold2);
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+
+		.content-header .breadcrumb {
+			background: transparent;
+			margin: 0;
+			padding: 0;
+			position: relative;
+		}
+
+		.content-header .breadcrumb-item,
+		.content-header .breadcrumb-item+.breadcrumb-item::before {
+			color: rgba(255, 255, 255, .55);
+			font-size: 12px;
+		}
+
+		.content-header .breadcrumb-item.active {
+			color: rgba(255, 255, 255, .9);
+		}
+
+		.content-header .breadcrumb-item a {
+			color: rgba(255, 255, 255, .7);
+			text-decoration: none;
+		}
+
+		/* ── Section label ── */
+		.section-label {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 14px;
+			font-size: 11px;
+			font-weight: 800;
+			letter-spacing: .1em;
+			text-transform: uppercase;
+			color: #94a3b8;
+		}
+
+		.section-label::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background: #e2e8f0;
+		}
+
+		.section-label .sl-dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			flex-shrink: 0;
+		}
+
+		/* ── Link Cards ── */
+		.ws-card {
+			border-radius: var(--card-radius);
+			overflow: hidden;
+			box-shadow: var(--shadow-card);
+			border: 1px solid rgba(221, 228, 240, .5);
+			background: #fff;
+			display: flex;
+			flex-direction: column;
+			transition: transform .22s cubic-bezier(.34, 1.56, .64, 1), box-shadow .22s;
+			animation: fadeUp .38s both;
+			text-decoration: none !important;
+			margin-bottom: 20px;
+		}
+
+		.ws-card:hover {
+			transform: translateY(-5px);
+			box-shadow: var(--shadow-hover);
+			text-decoration: none !important;
+		}
+
+		@keyframes fadeUp {
+			from {
+				opacity: 0;
+				transform: translateY(16px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.ws-card-head {
+			padding: 20px 20px 16px;
+			position: relative;
+			display: flex;
+			align-items: flex-start;
+			gap: 14px;
+			overflow: hidden;
+		}
+
+		.ws-card-head::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(ellipse at 85% 20%, rgba(255, 255, 255, .14) 0%, transparent 55%);
+			pointer-events: none;
+		}
+
+		/* Icon box */
+		.ws-icon-box {
+			width: 46px;
+			height: 46px;
+			border-radius: 13px;
+			background: rgba(255, 255, 255, .16);
+			border: 1px solid rgba(255, 255, 255, .22);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 20px;
+			color: #fff;
+			flex-shrink: 0;
+			position: relative;
+		}
+
+		.ws-card-head-text {
+			position: relative;
+		}
+
+		.ws-card-head-text h4 {
+			font-family: 'Playfair Display', serif;
+			font-size: 17px;
+			font-weight: 700;
+			color: #fff;
+			margin: 0 0 4px;
+			text-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+		}
+
+		.ws-card-head-text .ws-url {
+			font-size: 11px;
+			font-weight: 600;
+			color: rgba(255, 255, 255, .7);
+			word-break: break-all;
+			line-height: 1.4;
+		}
+
+		.ws-ext-icon {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, .12);
+			border: 1px solid rgba(255, 255, 255, .2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 11px;
+			color: rgba(255, 255, 255, .8);
+		}
+
+		/* Footer strip */
+		.ws-card-foot {
+			padding: 10px 18px;
+			background: rgba(0, 0, 0, .06);
+			border-top: 1px solid rgba(255, 255, 255, .12);
+			font-size: 11.5px;
+			font-weight: 700;
+			color: rgba(255, 255, 255, .85);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.ws-card-foot i {
+			font-size: 12px;
+		}
+
+		/* Color themes */
+		.wc-blue .ws-card-head {
+			background: linear-gradient(135deg, #0f2144 0%, #1a3a6b 50%, #2563a8 100%);
+		}
+
+		.wc-green .ws-card-head {
+			background: linear-gradient(135deg, #14532d 0%, #15803d 50%, #16a34a 100%);
+		}
+
+		.wc-orange .ws-card-head {
+			background: linear-gradient(135deg, #92400e 0%, #b45309 50%, #d97706 100%);
+		}
+
+		.wc-slate .ws-card-head {
+			background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+		}
+
+		.wc-fb .ws-card-head {
+			background: linear-gradient(135deg, #1a3a6b 0%, #1d4ed8 50%, #3b82f6 100%);
+		}
+
+		.wc-tiktok .ws-card-head {
+			background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+		}
+
+		.wc-ig .ws-card-head {
+			background: linear-gradient(135deg, #7b2d5e 0%, #c0445a 50%, #e05a3a 100%);
+		}
+
+		.wc-blue .ws-card-foot {
+			background: rgba(37, 99, 168, .25);
+			border-top-color: rgba(37, 99, 168, .3);
+		}
+
+		.wc-green .ws-card-foot {
+			background: rgba(22, 163, 74, .2);
+			border-top-color: rgba(22, 163, 74, .3);
+		}
+
+		.wc-orange .ws-card-foot {
+			background: rgba(217, 119, 6, .2);
+			border-top-color: rgba(217, 119, 6, .3);
+		}
+
+		.wc-slate .ws-card-foot {
+			background: rgba(71, 85, 105, .2);
+			border-top-color: rgba(71, 85, 105, .3);
+		}
+
+		.wc-fb .ws-card-foot {
+			background: rgba(59, 130, 246, .2);
+			border-top-color: rgba(59, 130, 246, .3);
+		}
+
+		.wc-tiktok .ws-card-foot {
+			background: rgba(30, 41, 59, .3);
+			border-top-color: rgba(30, 41, 59, .4);
+		}
+
+		.wc-ig .ws-card-foot {
+			background: rgba(192, 68, 90, .2);
+			border-top-color: rgba(192, 68, 90, .3);
+		}
+
+		/* ── Footer ── */
+		footer#footer,
+		.main-footer {
+			font-family: 'Plus Jakarta Sans', sans-serif !important;
+			font-size: 12px !important;
+			justify-content: center !important;
+			text-align: center !important;
+			flex-wrap: nowrap !important;
+			white-space: nowrap !important;
+			gap: 4px !important;
+		}
+
+		footer#footer .float-right,
+		.main-footer .float-right {
+			display: none !important;
+		}
+
+		/* ── Back to Top ── */
+		.back-to-top {
+			position: fixed;
+			bottom: 24px;
+			right: 24px;
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			background: var(--univ-blue);
+			color: #fff;
+			font-size: 22px;
+			box-shadow: 0 4px 16px rgba(26, 58, 107, .35);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(10px);
+			transition: opacity .25s, visibility .25s, transform .25s, background .18s;
+			z-index: 9999;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.back-to-top:hover {
+			background: var(--univ-blue2);
+			color: #fff;
+			transform: translateY(-2px);
+		}
+
+		.back-to-top.show {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.back-to-top .bi-arrow-up-short::before {
+			content: "\2191";
+			font-style: normal;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 1;
+			font-family: sans-serif;
+		}
+	</style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+
+		<nav class="main-header navbar navbar-expand navbar-white navbar-light" id="navbar"></nav>
+		<script src="../asset/js/layouts/navbar.js"></script>
+
+		<aside class="main-sidebar sidebar-dark-teal elevation-4" id="sidebar"></aside>
+		<script src="../asset/js/layouts/sidebar.js"></script>
+
+		<div class="content-wrapper">
+
+			<!-- Page Header -->
+			<section class="content-header mb-3">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-sm-7">
+							<h1>
+								<span class="header-icon"><i class="fas fa-globe"></i></span>
+								Website &amp; Sosmed Polinus
+							</h1>
+						</div>
+						<div class="col-sm-5">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="waktu_sholat.html"><i
+											class="fas fa-home mr-1"></i>TRPLB</a></li>
+								<li class="breadcrumb-item active">Website &amp; Sosmed</li>
+							</ol>
 						</div>
 					</div>
-					<!-- /.container-fluid -->
-				</section>
+				</div>
+			</section>
 
-				<!-- Main content -->
-				<section class="content">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-primary text-white">
-									<div class="inner">
-										<h3>Polinus</h3>
+			<section class="content">
+				<div class="container-fluid">
 
-										<p>https://www.poltekindonusa.ac.id/</p>
-									</div>
-									<div class="icon">
-										<i class="fas fa-graduation-cap"></i>
-									</div>
-									<a
-										href="https://www.poltekindonusa.ac.id/"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-success text-white">
-									<div class="inner">
-										<h3>Polinus Payment</h3>
-
-										<p>https://sikeu.poltekindonusa.ac.id</p>
-									</div>
-									<div class="icon">
-										<i class="fas fa-credit-card"></i>
-									</div>
-									<a
-										href="https://sikeu.poltekindonusa.ac.id"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-orange text-white">
-									<div class="inner">
-										<h3>Informasi Akademik</h3>
-
-										<p>https://akademik.poltekindonusa.ac.id</p>
-									</div>
-									<div class="icon">
-										<i class="fas fa-calendar-alt"></i>
-									</div>
-									<a
-										href="https://akademik.poltekindonusa.ac.id"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-secondary text-white">
-									<div class="inner">
-										<h3>Siakad Polinus</h3>
-
-										<p>https://siakadv2.poltekindonusa.ac.id</p>
-									</div>
-									<div class="icon">
-										<i class="fas fa-chalkboard-teacher"></i>
-									</div>
-									<a
-										href="https://siakadv2.poltekindonusa.ac.id"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-primary text-white">
-									<div class="inner">
-										<h3>Facebook</h3>
-
-										<p>
-											https://www.facebook.com/share/D7BSWbPEFoqxoesL/?mibextid=qi2Omg
-										</p>
-									</div>
-									<div class="icon">
-										<i class="fab fa-facebook"></i>
-									</div>
-									<a
-										href="https://www.facebook.com/share/D7BSWbPEFoqxoesL/?mibextid=qi2Omg"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-dark text-white">
-									<div class="inner">
-										<h3>Tiktok</h3>
-
-										<p>https://www.tiktok.com/@poltek_indonusa</p>
-									</div>
-									<div class="icon">
-										<i class="fab fa-tiktok"></i>
-									</div>
-									<a
-										href="https://www.tiktok.com/@poltek_indonusa"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<!-- small box -->
-								<div class="small-box bg-danger text-white">
-									<div class="inner">
-										<h3>Instagram</h3>
-
-										<p>https://www.instagram.com/poltek_indonusa</p>
-									</div>
-									<div class="icon">
-										<i class="fab fa-instagram"></i>
-									</div>
-									<a
-										href="https://www.instagram.com/poltek_indonusa"
-										class="small-box-footer"
-										>More info <i class="fas fa-arrow-circle-right"></i
-									></a>
-								</div>
-							</div>
-						</div>
+					<!-- Website Resmi -->
+					<div class="section-label">
+						<span class="sl-dot" style="background:#1a3a6b"></span>
+						Website Resmi
 					</div>
-					<!-- /.container-fluid -->
-				</section>
-				<!-- /.content -->
-			</div>
-			<!-- /.content-wrapper -->
+					<div class="row" id="ws-resmi-row"></div>
 
-			<!-- Footer -->
-			<footer class="main-footer" id="footer"></footer>
-			<script src="../asset/js/layouts/footer.js"></script>
+					<!-- Media Sosial -->
+					<div class="section-label mt-2">
+						<span class="sl-dot" style="background:#c8952a"></span>
+						Media Sosial
+					</div>
+					<div class="row" id="ws-sosmed-row"></div>
 
-			<a
-				href="#"
-				class="back-to-top d-flex align-items-center justify-content-center"
-				><i class="bi bi-arrow-up-short"></i
-			></a>
+				</div>
+			</section>
+		</div><!-- /.content-wrapper -->
 
-			<!-- Control Sidebar -->
-			<aside class="control-sidebar control-sidebar-dark">
-				<!-- Control sidebar content goes here -->
-			</aside>
-			<!-- /.control-sidebar -->
-		</div>
-		<!-- ./wrapper -->
+		<footer class="main-footer" id="footer"></footer>
+		<script src="../asset/js/layouts/footer.js"></script>
 
-		<a
-			id="back-to-top"
-			href="#"
-			class="btn btn-primary back-to-top"
-			role="button"
-			aria-label="Scroll to top"
-		>
-			<i class="fas fa-chevron-up"></i>
+		<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+			<i class="bi bi-arrow-up-short"></i>
 		</a>
 
-		<!-- jQuery -->
-		<script src="../plugins/jquery/jquery.min.js"></script>
-		<!-- Bootstrap 4 -->
-		<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<!-- AdminLTE App -->
-		<script src="../asset/js/adminlte.min.js"></script>
-	</body>
+	</div><!-- /.wrapper -->
+
+	<script src="../plugins/jquery/jquery.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../asset/js/adminlte.min.js"></script>
+	<script src="../asset/data/ws.js"></script>
+
+	<script>
+		(function () {
+			const btn = document.querySelector('.back-to-top');
+			window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 200), {
+				passive: true
+			});
+			btn.addEventListener('click', e => {
+				e.preventDefault();
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+		})();
+	</script>
+</body>
+
 </html>
